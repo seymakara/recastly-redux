@@ -3,34 +3,22 @@ import changeVideoList from './videoList.js';
 import changeVideo from './currentVideo.js';
 import YOUTUBE_API_KEY from '../config/youtube.js';
 
+import _ from 'lodash';
 
 var handleVideoSearch = (q) => {
   //TODO:  Write an asynchronous action to handle a video search!
-  return (dispatch) => {
-    searchYouTube({YOUTUBE_API_KEY, q}, (videos) => {
+  return _.debounce(function(dispatch) {
+    var options = {
+      key: YOUTUBE_API_KEY, 
+      query: q
+    };
+    searchYouTube(options, (videos) => {
       dispatch(changeVideoList(videos))
       dispatch(changeVideo(videos[0]))
     })
     
-  }
+  },200);
 
 };
 
 export default handleVideoSearch;
-
-// export function itemsFetchData(url) {
-//   return (dispatch) => {
-//       dispatch(itemsIsLoading(true));
-//       fetch(url)
-//           .then((response) => {
-//               if (!response.ok) {
-//                   throw Error(response.statusText);
-//               }
-//               dispatch(itemsIsLoading(false));
-//               return response;
-//           })
-//           .then((response) => response.json())
-//           .then((items) => dispatch(itemsFetchDataSuccess(items)))
-//           .catch(() => dispatch(itemsHasErrored(true)));
-//   };
-// }

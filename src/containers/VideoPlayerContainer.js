@@ -9,7 +9,7 @@ var mapStateToProps = (state, ownProps) => {
     }
 }
 
-var mapDispatchtoProps = (dispatch, ownProps) => {}
+var mapDispatchtoProps = (dispatch, ownProps) => ({})
 
 var VideoPlayerContainer = connect(
     mapStateToProps,

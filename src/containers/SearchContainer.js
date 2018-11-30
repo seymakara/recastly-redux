@@ -8,9 +8,9 @@ import handleVideoSearch from '../actions/search.js';
 //HINT: use react-redux 'connect' method to generate a container component from
 //state and dispatch mappings.
 
-var mapStateToProps = (state, ownProps) => {}
+var mapStateToProps = (state) => ({})
 
-var mapDispatchtoProps = (dispatch, ownProps) => {
+var mapDispatchtoProps = (dispatch) => {
     return {
         handleSearchInputChange: (q) => {
           dispatch(handleVideoSearch(q))
